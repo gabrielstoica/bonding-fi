@@ -3,7 +3,6 @@ pragma solidity ^0.8.20;
 
 import { Events } from "./utils/Events.sol";
 import { Users } from "./utils/Types.sol";
-import { Counter } from "../src/Counter.sol";
 import "forge-std/Test.sol";
 
 abstract contract Base_Test is Test, Events {
@@ -17,8 +16,6 @@ abstract contract Base_Test is Test, Events {
                                    TEST CONTRACTS
     //////////////////////////////////////////////////////////////////////////*/
 
-    Counter internal counter;
-
     /*//////////////////////////////////////////////////////////////////////////
                                   SET-UP FUNCTION
     //////////////////////////////////////////////////////////////////////////*/
@@ -30,11 +27,6 @@ abstract contract Base_Test is Test, Events {
     /*//////////////////////////////////////////////////////////////////////////
                             DEPLOYMENT-RELATED FUNCTIONS
     //////////////////////////////////////////////////////////////////////////*/
-
-    /// @dev Deploys the Counter contract
-    function deployCounter(uint256 foo, string memory bar) internal returns (Counter) {
-        return new Counter(foo, bar);
-    }
 
     /*//////////////////////////////////////////////////////////////////////////
                                     OTHER HELPERS
