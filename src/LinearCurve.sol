@@ -22,9 +22,9 @@ abstract contract LinearCurve is ILinearCurve {
     //////////////////////////////////////////////////////////////////////////*/
 
     /// @dev Initializes the curve slope and the initial price.
-    constructor(UD60x18 _slope, UD60x18 _initialPrice) {
-        slope = _slope;
-        initialPrice = _initialPrice;
+    constructor(uint256 _slope, uint256 _initialPrice) {
+        slope = ud(_slope);
+        initialPrice = ud(_initialPrice);
     }
 
     /*//////////////////////////////////////////////////////////////////////////
