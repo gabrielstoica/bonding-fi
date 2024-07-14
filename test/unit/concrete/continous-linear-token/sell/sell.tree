@@ -1,0 +1,6 @@
+buy.t.sol
+├── when the caller does not use the proper balance
+│  └── it should revert with the {ERC20InsufficientBalance} error 
+└── when the caller has the proper balance
+   ├── it should burn the according amount of tokens
+   └── it should send the native tokens to the caller

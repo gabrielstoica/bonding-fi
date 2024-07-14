@@ -1,0 +1,6 @@
+buy.t.sol
+├── when the caller does not use the correct price
+│  └── it should revert with the {InsufficientPaymentAmount} error 
+└── when the caller use the correct price
+   ├── it should mint the according amount of tokens
+   └── it should send the native tokens to the contract

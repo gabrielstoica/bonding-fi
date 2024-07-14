@@ -3,7 +3,7 @@ pragma solidity ^0.8.20;
 
 import { Events } from "./utils/Events.sol";
 import { Users } from "./utils/Types.sol";
-import { ContinuousToken } from "./../src/ContinuousToken.sol";
+import { ContinuousLinearToken } from "./../src/tokens/ContinousLinearToken.sol";
 import "forge-std/Test.sol";
 
 abstract contract Base_Test is Test, Events {
@@ -17,7 +17,7 @@ abstract contract Base_Test is Test, Events {
                                    TEST CONTRACTS
     //////////////////////////////////////////////////////////////////////////*/
 
-    ContinuousToken internal continuousToken;
+    ContinuousLinearToken internal linearToken;
 
     /*//////////////////////////////////////////////////////////////////////////
                                   SET-UP FUNCTION
@@ -26,7 +26,7 @@ abstract contract Base_Test is Test, Events {
     function setUp() public virtual {
         users = Users({ admin: createUser("admin"), bob: createUser("bob"), eve: createUser("eve") });
 
-        continuousToken = deployContinousToken({
+        linearToken = deployContinousLinearToken({
             _name: "ContinuousLinearToken",
             _symbol: "CLT",
             _slope: 0.0005e18,
@@ -38,14 +38,14 @@ abstract contract Base_Test is Test, Events {
                             DEPLOYMENT-RELATED FUNCTIONS
     //////////////////////////////////////////////////////////////////////////*/
 
-    /// @dev Deploys a new {ContinuousToken} contract
-    function deployContinousToken(
+    /// @dev Deploys a new {ContinuousLinearToken} contract
+    function deployContinousLinearToken(
         string memory _name,
         string memory _symbol,
         uint256 _slope,
         uint256 _initialPrice
-    ) internal returns (ContinuousToken) {
-        return new ContinuousToken(_name, _symbol, _slope, _initialPrice);
+    ) internal returns (ContinuousLinearToken) {
+        return new ContinuousLinearToken(_name, _symbol, _slope, _initialPrice);
     }
 
     /*//////////////////////////////////////////////////////////////////////////

@@ -1,0 +1,2 @@
+getCurrentPrice.t.sol
+└── it should retrieve the current price of the token based on the total supply
