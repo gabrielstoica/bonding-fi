@@ -24,8 +24,8 @@ $f(x) = b*x + a$
 
 where:
 
-$ b $ - the slope (defining how steep the line is) \
-$ a $ - the initial price
+$b$ - the slope (defining how steep the line is) \
+$a$ - the initial price
 
 Example:
 
