@@ -2,7 +2,7 @@
 pragma solidity ^0.8.26;
 
 import { UD60x18, pow, ud, unwrap } from "@prb/math/src/UD60x18.sol";
-import { ILinearCurve } from "./interfaces/ILinearCurve.sol";
+import { ILinearCurve } from "./../interfaces/ILinearCurve.sol";
 
 /// @title LinearCurve
 /// @notice See the documentation in {ILinearCurve}

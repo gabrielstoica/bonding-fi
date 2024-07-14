@@ -2,10 +2,10 @@
 pragma solidity ^0.8.26;
 
 import { ERC20 } from "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-import { unwrap, ud } from "./../lib/prb-math/src/UD60x18.sol";
-import { LinearCurve } from "./LinearCurve.sol";
+import { LinearCurve } from "./../curves/LinearCurve.sol";
 
-contract ContinuousToken is ERC20, LinearCurve {
+/// @title ContinuousLinearToken
+contract ContinuousLinearToken is ERC20, LinearCurve {
     error InsufficientPaymentAmount();
     error SaleFailed();
 
@@ -31,14 +31,17 @@ contract ContinuousToken is ERC20, LinearCurve {
     }
 
     function sell(uint256 amount) public {
-        //Checks, Effects, Interactions: burn the sold amount of tokens
+        // Store the current total supply
+        uint256 totalSupply = totalSupply();
+
+        // Checks, Effects, Interactions: burn the sold amount of tokens
         _burn({ account: msg.sender, value: amount });
 
-        // Calculate the amount of native token to receive
-        uint256 amountValue = unwrap(ud(amount).mul(ud(getCurrentPrice(totalSupply()))));
+        // Calculate the amount of native token (ETH) to receive
+        uint256 price = getPrice(totalSupply - amount, totalSupply);
 
         // Interactions: pay the seller
-        (bool success,) = payable(msg.sender).call{ value: amountValue }("");
+        (bool success,) = payable(msg.sender).call{ value: price }("");
         if (!success) revert SaleFailed();
     }
 }
