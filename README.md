@@ -33,7 +33,7 @@ $f(x) = 1.5*x + 0.003$
 
 this linear curve has the following [graph](https://www.desmos.com/calculator/iwm6tiuxz4):
 
-![Linear Bonding Curve](./assets/linear_curve_graph.png)
+<img src="./assets/linear_curve_graph.png" alt="drawing" style="width:500px;"/>
 
 ## Install
 
